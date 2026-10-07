@@ -92,14 +92,6 @@ YourApp.apk
 
 The Java manifest patcher modifies the template manifest with the selected app name and package name before the APK is generated.
 
-## 🔗 GitHub Repository Configuration
-
-If you fork or move this project, update the repository URL inside `apk.js`:
-
-```js
-const repoBase = "https://raw.githubusercontent.com/RDH-HUB/APK/main/";
-```
-
 ## 🔐 Security
 
 Do **not** publish private signing keys, passwords, API keys, or other sensitive credentials in a public repository.
