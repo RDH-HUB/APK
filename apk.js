@@ -65,13 +65,13 @@ for (const file of filesToDownload) {
 }
 
 // Ensure ManifestPatcher is compiled
-if (!fs.existsSync("build_patcher/ManifestPatcher.class")) {
+if (!fs.existsSync("patcher/ManifestPatcher.class")) {
     console.log("Compiling ManifestPatcher...");
-    fs.mkdirSync("build_patcher", {
+    fs.mkdirSync("patcher", {
         recursive: true
     });
     try {
-        execSync("javac -d build_patcher patcher_src/ManifestPatcher.java patcher_src/com/rdhhub/bikinaplikasi/helper/*.java");
+        execSync("javac -d patcher patcher_src/ManifestPatcher.java patcher_src/com/rdhhub/bikinaplikasi/helper/*.java");
     } catch (e) {
         console.error("Error compiling Java patcher. Ensure JDK is installed.");
         process.exit(1);
@@ -111,7 +111,7 @@ try {
 
     // 3. Patch binary AndroidManifest.xml
     console.log("[2] Patching AndroidManifest.xml...");
-    execSync(`java -cp build_patcher ManifestPatcher temp_AndroidManifest.xml patched_AndroidManifest.xml ${packageName} "${appName}"`);
+    execSync(`java -cp patcher ManifestPatcher temp_AndroidManifest.xml patched_AndroidManifest.xml ${packageName} "${appName}"`);
 
     // 4. Decompress template to a temporary folder
     console.log("[3] Decompressing template...");
